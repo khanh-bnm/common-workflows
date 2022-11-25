@@ -26,7 +26,6 @@ jobs:
     name: Sync Prod
     runs-on: ubuntu-22.04
     environment: prod
-    needs: sync-staging
     steps:
       - name: Update config
         run: echo "sync prod ${{ inputs.service }}"

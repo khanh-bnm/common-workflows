@@ -6,7 +6,7 @@ on:
         type: string
 jobs: 
   sync-dev:
-    if: ${{ github.ref_name == 'main' }}
+    if: ${{ github.ref_type	== 'tag' }} 
     name: Sync Dev
     runs-on: ubuntu-22.04
     environment: dev
@@ -14,7 +14,7 @@ jobs:
       - name: Update config
         run: echo "sync dev ${{ inputs.service }}"
   sync-staging:
-    if: ${{ github.ref_type	== 'tag' }} 
+    if: ${{ github.ref_name == 'main' }}
     name: Sync Staging
     runs-on: ubuntu-22.04
     environment: staging
@@ -22,7 +22,7 @@ jobs:
       - name: Update config
         run: echo "sync staging ${{ inputs.service }}"
   sync-prod:
-    if: ${{ github.ref_type	== 'tag' }} 
+    if: ${{ github.ref_name == 'main' }}
     name: Sync Prod
     runs-on: ubuntu-22.04
     environment: prod

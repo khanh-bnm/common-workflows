@@ -24,6 +24,7 @@ jobs:
   sync-prod:
     if: ${{ github.ref_type	== 'tag' }} 
     name: Sync Prod
+    continue-on-error: true
     runs-on: ubuntu-22.04
     environment: prod
     steps:
